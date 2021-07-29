@@ -76,12 +76,12 @@ export default {
     FixedPlugin,
   },
   beforeMount() {
-    this.navItems = this.$props.account.admin ? items.admin : items.user
-    // this.navItems = this.$props.account.admin ? items.user : items.admin
+    // this.navItems = this.$props.account.admin ? items.admin : items.user
+    this.navItems = this.$props.account.admin ? items.user : items.admin
   },
   beforeUpdate() {
-    this.navItems = this.$props.account.admin ? items.admin : items.user
-    // this.navItems = this.$props.account.admin ? items.user : items.admin
+    // this.navItems = this.$props.account.admin ? items.admin : items.user
+    this.navItems = this.$props.account.admin ? items.user : items.admin
   },
   data() {
     return {

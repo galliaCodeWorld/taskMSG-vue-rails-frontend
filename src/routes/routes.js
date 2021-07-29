@@ -53,6 +53,7 @@ import AdminTags from "@/pages/Admin/tags";
 // User------------------------
 // import Dashboard from '@/pages/User/dash'
 import Tasks from '@/pages/User/tasks'
+import Leads from '@/pages/User/leads'
 //////////////////////////////////////////////////////////////////////////////////////////
 
 let componentsMenu = {
@@ -267,14 +268,14 @@ let userPages = {
   path: "/user",
   component: DashboardLayout,
   // redirect: "/user/dashboard",
-  redirect: "/user/tasks",
+  redirect: "/user/leads",
   name: "UserPages",
   children: [
-    // {
-    //   path: 'dashboard',
-    //   component: Dashboard,
-    //   name: 'Dashboard'
-    // },
+    {
+      path: 'leads',
+      component: Leads,
+      name: 'leads'
+    },
     {
       path: 'tasks',
       component: Tasks,

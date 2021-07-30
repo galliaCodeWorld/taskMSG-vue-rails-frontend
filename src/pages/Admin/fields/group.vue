@@ -22,7 +22,9 @@
       </div>
     </div>
     <md-divider class="md-hr md-theme-demo-light"></md-divider>
-    <CreateEditField :openModal="openModal" 
+    <CreateEditField 
+      :openModal="openModal" 
+      :gid="Number(group.id)"
       :filed="adFieldsStates.ceFieldData[group.id] && adFieldsStates.ceFieldData[group.id]['new'] 
         ? adFieldsStates.ceFieldData[group.id]['new'] : {id: 'new'}"
       @closeCEFieldModal="toggleCEField" />

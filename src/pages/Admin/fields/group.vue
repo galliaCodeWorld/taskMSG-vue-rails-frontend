@@ -8,19 +8,24 @@
           <h5 style="margin-bottom: 0; color: black; font-weight: 700" v-html="group.name" />
           <div class="md-group" :style="btToggle ? 'visibility: visible;' : 'visibility: hidden;'">
             <md-button class="md-info" style="padding: 0;" @click="editGroup">EDIT GROUP</md-button>
-            <md-button class="md-success" style="padding: 0;" @click="toggleField">{{ncBtnHtml()}}</md-button>
+            <md-button :class="openModal ? 'md-primary' : 'md-success'" style="padding: 0;" @click="toggleCEField">
+              {{openModal ? 'Cancel Field' : 'New Field'}}
+            </md-button>
             <md-button class="md-danger" style="padding: 0;" @click="deleteGroup">DELETE?</md-button>
           </div>
         </div>
         <md-divider class="md-hr md-theme-demo-light"></md-divider>
       </div>
       <div v-for="(field, n) in group.fields" :key="`agff-${n}`">
-        <Field :field="field" />
+        <Field :gid="group.id ? String(group.id) : null" :field="field" />
         <md-divider class="md-hr md-theme-demo-light"></md-divider>
       </div>
     </div>
     <md-divider class="md-hr md-theme-demo-light"></md-divider>
-    <CreateField :gid="group.id ? String(group.id) : null"/>
+    <CreateEditField :openModal="openModal" 
+      :filed="adFieldsStates.ceFieldData[group.id] && adFieldsStates.ceFieldData[group.id]['new'] 
+        ? adFieldsStates.ceFieldData[group.id]['new'] : {id: 'new'}"
+      @closeCEFieldModal="toggleCEField" />
     <br/>
   </div>
 </template>
@@ -30,7 +35,7 @@
   import { mapState, mapGetters} from "vuex"
   import { act_admin } from "@/store/types/actions.type";
   import Field from './field.vue'
-  import CreateField from './createField.vue'
+  import CreateEditField from './createEditField.vue'
   import Swal from "sweetalert2";
 
   export default {
@@ -48,21 +53,19 @@
     },
     components:{
       Field,
-      CreateField
+      CreateEditField
+    },
+    beforeUpdate() {
+      let seed = store.getters.adFieldsStates.ceFieldData
+      this.openModal = seed[this.$props.group.id] && seed[this.$props.group.id]["new"] ? true : false
     },
     data() {
       return {
         btToggle: false,
+        openModal: false
       };
     },
     methods: {
-      ncBtnHtml() {
-        let newKey
-        let seed = store.getters.adFieldsStates.ceFieldData
-        let gid = Object.keys(seed).find(k => String(k) === String(this.$props.group.id))
-        if (gid) newKey = Object.keys(seed[gid]).find(k => k === 'new')
-        return newKey ? 'Close Field' : 'New Field'
-      },
       notifyVue({t, m, i, v, h, c}) {
         this.$notify({
           timeout: t || 2000,
@@ -101,17 +104,17 @@
           }
         })
       },
-      toggleField() {
-        let gid = Object.keys(store.getters.adFieldsStates.ceFieldData).find(k => k === String(this.$props.group.id))
+      toggleCEField() {
         let data = {gid: this.$props.group.id}
-        if (gid) {
-          Object.assign(data, {del: 'new'})
-        } else {
-          Object.assign(data, {add: {new: {}}})
-        }
+        let seed = store.getters.adFieldsStates.ceFieldData
+        seed[this.$props.group.id] && seed[this.$props.group.id]["new"] 
+          ? Object.assign(data, {del: 'new'}) 
+          : Object.assign(data, {add: {new: {id: 'new'}}})
         Promise.all([
           store.dispatch(act_admin.fields.setCEFieldData, data)
         ]).then(() => {
+          seed = store.getters.adFieldsStates.ceFieldData
+          this.openModal = seed[this.$props.group.id] && seed[this.$props.group.id]["new"] ? true : false
         })
       },
     },

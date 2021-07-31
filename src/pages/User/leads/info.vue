@@ -63,20 +63,7 @@ export default {
     //   store.dispatch(act_admin.users.editID, this.$props.user.id)
     // },
     changeStatus(status){
-      Promise.all([
-        store.dispatch(act_user.leads.status, {id: this.$props.lead.id, status: status}),
-      ]).then(() => {
-        Promise.all([
-          store.dispatch(act_admin.users.search),
-          store.dispatch(act_admin.groups.get),
-        ]).then(() => {
-          this.notifyVue({m: `${username} is ${suspend ? 'Reactive' : 'Suspended'}!`, c: 'success'})
-        }).catch(err => {
-          this.notifyVue({t: 2500, m: `Failed to ${suspend ? 'Reactive' : 'Suspended'} ${username}...`, c: 'warning', v: 'top', h: 'left'})
-        })
-      }).catch(err=> {
-        this.notifyVue({t: 2500, m: `Failed to ${suspend ? 'Reactive' : 'Suspended'} ${username}...`, c: 'warning', v: 'top', h: 'left'})
-      })
+      alert(status);
     },
     loadForm(){
 

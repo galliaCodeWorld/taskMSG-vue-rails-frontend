@@ -9,9 +9,10 @@
           <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Leads</p>
           <p class="category create-lead" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" @click="createTask" >Create Lead</p>
         </template>
+        
         <template slot="footer">
           <div v-for="(lead,n) in urLeadsStates.leads" :key="'tag'+n" class="lead-info">
-            <DetailLead :user="lead"/>
+            <DetailLead :lead="lead"/>
             <md-divider class="md-hr md-theme-demo-light" />
           </div>
         </template>
@@ -22,7 +23,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { act_admin } from "@/store/types/actions.type";
+import { act_user } from "@/store/types/actions.type";
 // import EditUser from "./edit.vue";
 import { StatsCard } from "@/components";
 // import LeftDock from "../LeftDock.vue";
@@ -38,11 +39,24 @@ export default {
     DetailLead
     // UserLeftDock,
   },
+  beforeRouteEnter(to, from, next) {
+    Promise.all([
+      store.dispatch(act_user.leads.search),
+      // store.dispatch(act_user.groups.get),
+      // store.dispatch(act_user.viewsearch, true)
+    ]).then(() => {
+      console.log('after axios', store.getters.urLeadsStates)
+      next();
+    });
+  },
   data() {
     return {
     };
   },
   methods: {
+    test() {
+      console.log(store.getters.urLeadsStates)
+    },
     createTask() {
       alert('view create form...');
     },

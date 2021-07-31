@@ -28,7 +28,7 @@ const actions = {
         .then(res => {
           if (res.msg) context.commit(SET_ERROR, res.msg)
           else if (res.data){
-            context.commit(mut_user.leads.getall, {data: res.data});
+            context.commit(mut_user.leads.getall,  res.data);
           }
           resolve()
         })
@@ -38,6 +38,24 @@ const actions = {
         })
     })
   },
+  [act_user.leads.status](context, {id, status}) {
+    return new Promise((resolve, reject) => {
+      ApiService.post(`${URLS.user.lead}/${id}/${status}`)
+        .then(res => {
+          if (res.msg) context.commit(SET_ERROR, res.msg)
+          else if (res.data){
+            context.commit(mut_user.leads.getall,  res.data);
+          }
+          resolve()
+        })
+        .catch(err => {
+          context.commit(SET_ERROR, err.data.errors);
+          reject(err)
+        })
+    })
+  },
+
+
   ////////////////////////////// group //////////////////////////////////////////////////////////
   // [act_admin.fields.group.create](context, formData) {
   //   return new Promise((resolve, reject) => {
@@ -226,7 +244,7 @@ const mutations = {
     state.error = error;
   },
   [mut_user.leads.getall](state, data) {
-    state.users = data
+    state.leads = JSON.parse(data.data)
   },
   // [mut_admin.fields.setCEGroupID](state, id) {
   //   state.ceGroupID = id

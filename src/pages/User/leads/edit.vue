@@ -20,6 +20,20 @@
           </div>
           <div class="md-layout-item md-medium-size-50 md-xsmall-size-50 md-size-50">
             <ValidationProvider
+              name="last_name"
+              rules="required"
+              v-slot="{ passed, failed }"
+            >
+              <md-field :class="[{ 'md-error': failed }, { 'md-valid': passed }]">
+                <label>Last Name</label>
+                <md-input v-model="last_name" type="text"> </md-input>
+                <md-icon class="error" v-show="failed">close</md-icon>
+                <md-icon class="success" v-show="passed">done</md-icon>
+              </md-field>
+            </ValidationProvider>
+          </div>
+          <div class="md-layout-item md-medium-size-50 md-xsmall-size-50 md-size-50">
+            <ValidationProvider
               name="email"
               rules="required|email"
               v-slot="{ passed, failed }"
@@ -27,6 +41,21 @@
               <md-field :class="[{ 'md-error': failed }, { 'md-valid': passed }]">
               <label>Email Adress</label>
               <md-input v-model="email" type="email"> </md-input>
+
+              <md-icon class="error" v-show="failed">close</md-icon>
+              <md-icon class="success" v-show="passed">done</md-icon>
+              </md-field>
+            </ValidationProvider>
+          </div>
+          <div class="md-layout-item md-medium-size-50 md-xsmall-size-50 md-size-50">
+            <ValidationProvider
+              name="phone"
+              rules="required"
+              v-slot="{ passed, failed }"
+            >
+              <md-field :class="[{ 'md-error': failed }, { 'md-valid': passed }]">
+              <label>Phone</label>
+              <md-input v-model="phone" type="password"> </md-input>
 
               <md-icon class="error" v-show="failed">close</md-icon>
               <md-icon class="success" v-show="passed">done</md-icon>

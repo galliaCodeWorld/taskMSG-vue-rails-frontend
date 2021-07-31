@@ -3,22 +3,18 @@
     <div class="container">
       <nav>
         <ul>
-          <li>
-            <a v-if="$route.meta.rtlActive" href="http://About.example.com">
-              شركة
-            </a>
-            <a v-else href="https://About.example.com">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a v-if="$route.meta.rtlActive" href="http://blog.example.com">
-              محفظة
-            </a>
-            <a v-else href="http://blog.example.com">
-              Blog
-            </a>
-          </li>
+          <md-list-item href="#">
+            <md-icon>comment</md-icon>
+            <p>About Us</p>
+          </md-list-item>
+          <md-list-item href="#">
+            <md-icon>comment</md-icon>
+            <p>Blog</p>
+          </md-list-item>
+          <md-list-item href="#">
+            <md-icon>location_on</md-icon>
+            <p>Map</p>
+          </md-list-item>
         </ul>
       </nav>
       <div class="copyright text-center">
@@ -35,4 +31,13 @@
 <script>
 export default {};
 </script>
-<style></style>
+<style lang="css">
+  .footer {
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .md-list-item-content>.md-icon:first-child {
+      margin-right: 2px;
+    }
+</style>

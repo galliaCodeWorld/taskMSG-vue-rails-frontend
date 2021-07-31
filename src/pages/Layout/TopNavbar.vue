@@ -6,32 +6,6 @@
   >
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start">
-        <drop-down direction="down">
-          <md-button
-            slot="title"
-            class="md-button md-simple"
-            data-toggle="dropdown"
-          >
-            <md-icon>location_on</md-icon>
-            <p class="mb-0">Map</p>
-          </md-button>
-          <ul class="dropdown-menu dropdown-menu-left" style="background: #989898">
-            <md-list-item href="#" style="margin-right: 0;">
-              <md-icon>list</md-icon>
-              <a href="#" @click="toggleNav" class="md-black" style="font-size: 12px; font-weight: 600; margin-right: 0;">
-                <p>{{settingState.nav === 'user' ? 'Admin' : 'User'}}</p>
-              </a>
-            </md-list-item>
-            <md-list-item href="#" style="margin-right: 0;">
-              <md-icon>description</md-icon>
-              <a href="#" class="md-black" style="font-size: 12px; font-weight: 600; margin-right: 0;"><p>Profile</p></a>
-            </md-list-item>
-            <md-list-item href="#" style="margin-right: 0;">
-              <md-icon>logout</md-icon>
-              <a href="#" class="md-black" style="font-size: 12px; font-weight: 600; margin-right: 0;"><p>logout</p></a>
-            </md-list-item>
-          </ul>
-        </drop-down>
       </div>
       <div class="md-toolbar-section-end">
         <div class="md-collapse">
@@ -51,14 +25,21 @@
                 <img :src="avatar" alt="avatar" style="width: 40px;" />
               </div>
             </md-button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li>
+            <ul class="dropdown-menu dropdown-menu-right" style="background: #989898;">
+              <md-list-item href="#" style="margin-right: 0;">
+                <md-icon>list</md-icon>
                 <a href="#" @click="toggleNav" class="md-black" style="font-size: 12px; font-weight: 600;">
-                  {{settingState.nav === 'user' ? 'Admin Menu' : 'User Menu'}}
+                  <p>{{settingState.nav === 'user' ? 'Admin' : 'User'}}</p>
                 </a>
-              </li>
-              <li><a href="#" class="md-black" style="font-size: 12px; font-weight: 600;">Profile</a></li>
-              <li><a href="#" class="md-black" style="font-size: 12px; font-weight: 600;">logout</a></li>
+              </md-list-item>
+              <md-list-item href="#" style="margin-right: 0;">
+                <md-icon>description</md-icon>
+                <a href="#" class="md-black" style="font-size: 12px; font-weight: 600;"><p>Profile</p></a>
+              </md-list-item>
+              <md-list-item href="#" style="margin-right: 0;">
+                <md-icon>logout</md-icon>
+                <a href="#" class="md-black" style="font-size: 12px; font-weight: 600;"><p>logout</p></a>
+              </md-list-item>
             </ul>
           </drop-down>
         </div>

@@ -1,8 +1,12 @@
 .fixed-plugin{
-    z-index: 99999;
+    position: fixed;
+    right: 0;
+    width: 64px;
     background: rgba(0,0,0,.3);
+    z-index: 1031;
     border-radius: 8px 0 0 8px;
     text-align: center;
+    top: 85px;
 
     li > a,
     .badge{
@@ -23,6 +27,9 @@
     }
 
     .dropdown-menu{
+        right: 80px;
+        left: auto !important;
+        top: -41px !important;
         width: 290px;
         border-radius: 10px;
         padding: 0 10px;
@@ -348,7 +355,7 @@
 }
 
 .fixed-plugin .dropdown-menu > li > a.img-holder{
-      font-size: 10px;
+      font-size: 16px;
       text-align: center;
       border-radius: 10px;
       background-color: #FFF;

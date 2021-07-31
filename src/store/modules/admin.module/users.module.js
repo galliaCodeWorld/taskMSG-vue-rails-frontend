@@ -79,7 +79,6 @@ const actions = {
   [act_admin.users.sustoggle](context, {id, suspend_at}) {
     return new Promise((resolve, reject) => {
       let slug = suspend_at ? 'reactivate' : 'suspend'
-      console.log(`${URLS.admin.users}/${id}/${slug}`)
       id 
         ? ApiService.post(`${URLS.admin.users}/${id}/${slug}`)
             .then(res => {

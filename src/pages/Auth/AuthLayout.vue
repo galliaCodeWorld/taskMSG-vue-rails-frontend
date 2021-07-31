@@ -3,7 +3,6 @@
     <md-toolbar md-elevation="0" class="md-transparent md-toolbar-absolute">
       <div class="md-toolbar-row md-offset">
         <div class="md-toolbar-section-start">
-          <h3 class="md-title">{{ $route.name }}</h3>
         </div>
         <div class="md-toolbar-section-end">
           <md-button
@@ -21,6 +20,10 @@
             :class="{ 'off-canvas-sidebar': responsive }"
           >
             <md-list>
+              <md-list-item href="#/pricing" @click="linkClick">
+                <md-icon>attach_money</md-icon>
+                Pricing
+              </md-list-item>
               <md-list-item href="#/register" @click="linkClick">
                 <md-icon>person_add</md-icon>
                 Register
@@ -28,6 +31,10 @@
               <md-list-item href="#/login" @click="linkClick">
                 <md-icon>fingerprint</md-icon>
                 login
+              </md-list-item>
+              <md-list-item href="#/lock" @click="linkClick">
+                <md-icon>lock_open</md-icon>
+                lock
               </md-list-item>
             </md-list>
           </div>
@@ -84,6 +91,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { ZoomCenterTransition } from "vue2-transitions";
 

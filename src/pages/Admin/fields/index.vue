@@ -1,66 +1,58 @@
 <template>
   <div>
-    <!-- <create-field-group /> -->
     <CreateEditGroup />
-    <div class="md-layout">
-      <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-20">
-        <LeftDock />
-      </div>
-      <div class="md-layout-item md-medium-size-70 md-xsmall-size-100 md-size-80 admin-fields">
-        <stats-card header-color="">
-          <template slot="header" style="padding-top: 10px">
-            <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Custom Fields</p>
-          </template>
-          <template slot="footer">
-            <strong class="title" slot="header-title" style="padding: 0; text-align: left; color: black;">
-              Custom fields are displayed in groups. Create a new field group, or add fields to one of the groups below. You can drag and drop fields to change their display order or move them between field groups.
-            </strong>
-            <div class="d-flex justify-content-between align-baseline">
-              <strong style="color: red;">
-                It is strongly recommended you restart your server after adding or removing any custom field.
-              </strong>
-              <md-button class="md-simple" @click="showModal">
-                <strong style="color: darkblue; font-weight: 700;">Create Field Group</strong>
-              </md-button>
+    <stats-card class="admin-fields" header-color="">
+      <template slot="header" style="padding-top: 10px">
+        <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Custom Fields</p>
+      </template>
+      <template slot="footer">
+        <strong class="title" slot="header-title" style="padding: 0; text-align: left; color: black;">
+          Custom fields are displayed in groups. Create a new field group, or add fields to one of the groups below. You can drag and drop fields to change their display order or move them between field groups.
+        </strong>
+        <div class="d-flex justify-content-between align-baseline">
+          <strong style="color: red;">
+            It is strongly recommended you restart your server after adding or removing any custom field.
+          </strong>
+          <md-button class="md-simple" @click="showModal">
+            <strong style="color: darkblue; font-weight: 700;">Create Field Group</strong>
+          </md-button>
+        </div>
+        <tabs
+          :tab-name="Object.keys(adFieldsStates.categories)"
+          color-button="warning"
+          style="box-shadow: none; margin: 0;"
+          class="field-tabs"
+          :activeInx="Object.keys(adFieldsStates.categories).indexOf(adFieldsStates.selectCatename) > -1 ? Object.keys(adFieldsStates.categories).indexOf(adFieldsStates.selectCatename) : 0"
+          @tabchange="tabChange"
+        >
+          <template slot="tab-pane-1">
+            <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[0]]" :key="`gacc-${n}`">
+              <Group :group="g"/>
             </div>
-            <tabs
-              :tab-name="Object.keys(adFieldsStates.categories)"
-              color-button="warning"
-              style="box-shadow: none; margin: 0;"
-              class="field-tabs"
-              :activeInx="Object.keys(adFieldsStates.categories).indexOf(adFieldsStates.selectCatename) > -1 ? Object.keys(adFieldsStates.categories).indexOf(adFieldsStates.selectCatename) : 0"
-              @tabchange="tabChange"
-            >
-              <template slot="tab-pane-1">
-                <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[0]]" :key="`gacc-${n}`">
-                  <Group :group="g"/>
-                </div>
-              </template>
-              <template slot="tab-pane-2">
-                <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[1]]" :key="`gcom-${n}`">
-                  <Group :group="g"/>
-                </div>
-              </template>
-              <template slot="tab-pane-3">
-                <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[2]]" :key="`gcon-${n}`">
-                  <Group :group="g"/>
-                </div>
-              </template>
-              <template slot="tab-pane-4">
-                <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[3]]" :key="`glead-${n}`">
-                  <Group :group="g"/>
-                </div>
-              </template>
-              <template slot="tab-pane-5">
-                <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[4]]" :key="`gopp-${n}`">
-                  <Group :group="g"/>
-                </div>
-              </template>
-            </tabs>
           </template>
-        </stats-card>
-      </div>
-    </div>
+          <template slot="tab-pane-2">
+            <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[1]]" :key="`gcom-${n}`">
+              <Group :group="g"/>
+            </div>
+          </template>
+          <template slot="tab-pane-3">
+            <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[2]]" :key="`gcon-${n}`">
+              <Group :group="g"/>
+            </div>
+          </template>
+          <template slot="tab-pane-4">
+            <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[3]]" :key="`glead-${n}`">
+              <Group :group="g"/>
+            </div>
+          </template>
+          <template slot="tab-pane-5">
+            <div v-for="(g, n) in adFieldsStates.categories[Object.keys(adFieldsStates.categories)[4]]" :key="`gopp-${n}`">
+              <Group :group="g"/>
+            </div>
+          </template>
+        </tabs>
+      </template>
+    </stats-card>
   </div>
 </template>
 
@@ -69,7 +61,6 @@ import store from "@/store";
 import { mapState, mapGetters} from "vuex"
 import { act_admin } from "@/store/types/actions.type";
 import { StatsCard } from "@/components";
-import LeftDock from "../LeftDock.vue";
 import { Tabs } from "@/components";
 import CreateEditGroup from './createEditGroup.vue'
 import Group from './group.vue'
@@ -92,7 +83,6 @@ export default {
   }),
   components: {
     StatsCard,
-    LeftDock,
     Tabs,
     CreateEditGroup,
     Group,

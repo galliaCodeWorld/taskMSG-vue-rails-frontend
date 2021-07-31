@@ -38,4 +38,12 @@ export const mut_admin = {
     get: 'MATagsGet',
   }
 }
+export const mut_user = {
+  viewsearch: 'MAUsersViewSearch',
+  leads: {
+    getID: 'MULeadsEditID',
+    getall: 'MULeadsGetaAll',
+    getone: 'MULeadsGetOne',
+  }
+}
 /////////////////////////////////////////////////////

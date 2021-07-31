@@ -51,4 +51,15 @@ export const act_admin = {
     delete: 'AATagsDelete',
   }
 }
+export const act_user = {
+  leads: {
+    editId: 'AULeaseEditID',
+    search: 'AULeadSearch',
+    create: 'AULeadCreate',
+    update: 'AULeadUpdate',
+    delete: 'AULeadDelete',
+    convert: 'AULeadConvert',
+    reject: 'AULeadReject'
+  }
+}
 ///////////////////////////////////////////////

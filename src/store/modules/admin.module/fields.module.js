@@ -36,7 +36,7 @@ const actions = {
           resolve()
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -59,13 +59,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -87,13 +87,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -115,13 +115,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -144,13 +144,14 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          console.log('err', err);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -172,13 +173,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -200,13 +201,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })

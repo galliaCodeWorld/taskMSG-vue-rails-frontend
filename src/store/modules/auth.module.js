@@ -32,8 +32,8 @@ const actions = {
           context.commit(SET_AUTH, data.user);
           resolve(data);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch(({ err }) => {
+          context.commit(SET_ERROR, err);
         });
     });
   },
@@ -47,8 +47,8 @@ const actions = {
           context.commit(SET_AUTH, data.user);
           resolve(data);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch(({ err }) => {
+          context.commit(SET_ERROR, err);
           reject(response);
         });
     });
@@ -60,8 +60,8 @@ const actions = {
         .then(({ data }) => {
           context.commit(SET_AUTH, data.user);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+        .catch(({ err }) => {
+          context.commit(SET_ERROR, err);
         });
     } else {
       context.commit(PURGE_AUTH);

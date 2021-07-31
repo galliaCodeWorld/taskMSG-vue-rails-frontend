@@ -7,30 +7,12 @@
     :style="sidebarStyle"
   >
     <div class="logo">
-      <a href="#" class="simple-text logo-mini" target="_blank">
-        <div class="logo-img">
-          <img :src="logo" />
-        </div>
+      <a href="https://example.company.support.com" class="simple-text logo-mini" target="_blank">
+        <div class="logo-img"><img :src="logo" /></div>
       </a>
-      <a href="#" class="simple-text logo-normal" target="_blank">
-        <template v-if="$route.meta.rtlActive">{{ rtlTitle }}</template>
-        <template v-else>{{ title }}</template>
+      <a href="https://example.company.support.com" class="simple-text logo-normal" target="_blank">
+        <template>{{ title }}</template>
       </a>
-      <div class="navbar-minimize">
-        <md-button
-          id="minimizeSidebar"
-          class="md-round md-just-icon md-transparent"
-          @click="minimizeSidebar"
-        >
-          <i class="material-icons text_align-center visible-on-sidebar-regular"
-            >more_vert</i
-          >
-          <i
-            class="material-icons design_bullet-list-67 visible-on-sidebar-mini"
-            >view_list</i
-          >
-        </md-button>
-      </div>
     </div>
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <slot></slot>
@@ -39,13 +21,11 @@
           <sidebar-item
             v-for="(link, index) in sidebarLinks"
             :key="link.name + index"
-            :link="link"
-          >
+            :link="link">
             <sidebar-item
               v-for="(subLink, index) in link.children"
               :key="subLink.name + index"
-              :link="subLink"
-            >
+              :link="subLink">
             </sidebar-item>
           </sidebar-item>
         </slot>
@@ -59,11 +39,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "App name"
-    },
-    rtlTitle: {
-      type: String,
-      default: "توقيت الإبداعية"
+      default: "Company"
     },
     //////////////////////////////  find_bug_side////////////////
     activeColor: {

@@ -1,25 +1,18 @@
 <template>
   <div>
     <EditUser />
-    <div class="md-layout">
-      <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-20">
-        <LeftDock />
-      </div>
-      <div class="md-layout-item md-medium-size-70 md-xsmall-size-100 md-size-80 admin-users">
-        <stats-card header-color="">
-          <template slot="header" style="padding-top: 10px">
-            <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Users</p>
-            <p class="category create-user" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" @click="showModal" >Create Users</p>
-          </template>
-          <template slot="footer">
-            <div v-for="(user,n) in adUsersStates.users" :key="'tag'+n" class="user-info">
-              <DetailUser :user="user"/>
-              <md-divider class="md-hr md-theme-demo-light" />
-            </div>
-          </template>
-        </stats-card>
-      </div>
-    </div>
+    <stats-card class="admin-users" header-color="">
+      <template slot="header" style="padding-top: 10px">
+        <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Users</p>
+        <p class="category create-user" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" @click="showModal" >Create Users</p>
+      </template>
+      <template slot="footer">
+        <div v-for="(user,n) in adUsersStates.users" :key="'tag'+n" class="user-info">
+          <DetailUser :user="user"/>
+          <md-divider class="md-hr md-theme-demo-light" />
+        </div>
+      </template>
+    </stats-card>
   </div>
 </template>
 
@@ -29,7 +22,6 @@ import store from "@/store";
 import { act_admin } from "@/store/types/actions.type";
 import EditUser from "./edit.vue";
 import { StatsCard } from "@/components";
-import LeftDock from "../LeftDock.vue";
 import DetailUser from "./detail.vue";
 
 export default {
@@ -37,7 +29,6 @@ export default {
   components: {
     EditUser,
     StatsCard,
-    LeftDock,
     DetailUser,
   },
   computed: {

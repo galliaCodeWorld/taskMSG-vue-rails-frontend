@@ -1,22 +1,22 @@
 export const items = {
   admin: [
     {
-      href: "#/admin",
+      href: "#/admin/dock/users",
       icon: {class: "material-icons", name: "person"},
       title: {class: "mb-0", name: 'Users'},
     },
     {
-      href: "#/admin/groups",
+      href: "#/admin/dock/groups",
       icon: {class: "material-icons", name: "people"},
       title: {class: "mb-0", name: 'Groups'},
     },
     {
-      href: "#/admin/fields",
+      href: "#/admin/dock/fields",
       icon: {class: "material-icons", name: "person"},
       title: {class: "mb-0", name: 'Custom Fields'},
     },
     {
-      href: "#/admin/tags",
+      href: "#/admin/dock/tags",
       icon: {class: "material-icons", name: "dvr"},
       title: {class: "mb-0", name: 'Tags'},
     },

@@ -58,8 +58,7 @@ export const act_user = {
     create: 'AULeadCreate',
     update: 'AULeadUpdate',
     delete: 'AULeadDelete',
-    convert: 'AULeadConvert',
-    reject: 'AULeadReject'
+    status: 'AULeadStatus'
   }
 }
 ///////////////////////////////////////////////

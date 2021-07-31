@@ -38,15 +38,14 @@ const actions = {
         })
     })
   },
-  [act_user.leads.status](context, {id, status}) {
+  [act_user.leads.status](context, {status, id}) {
     return new Promise((resolve, reject) => {
-      ApiService.post(`${URLS.user.lead}/${id}/${status}`)
+      ApiService.post(`${URLS.user.leads}/${id}/${status}`)
         .then(res => {
           if (res.msg) context.commit(SET_ERROR, res.msg)
           else if (res.data){
-            context.commit(mut_user.leads.getall,  res.data);
+            resolve(res.data)
           }
-          resolve()
         })
         .catch(err => {
           context.commit(SET_ERROR, err.data.errors);
@@ -113,34 +112,23 @@ const actions = {
   //       })
   //   })
   // },
-  // [act_admin.fields.group.delete](context, id) {
-  //   return new Promise((resolve, reject) => {
-  //     ApiService.post(`${URLS.admin.fields.groups}/${id}/delete`)
-  //       .then(res => {
-  //         if (res.msg) {
-  //           context.commit(SET_ERROR, res.msg)
-  //           resolve()
-  //         } else if (res.data) {
-  //           ApiService.query(URLS.admin.fields.groups, 
-  //             {key:'klass_name', query: context.state.selectCatename})
-  //             .then(reget => {
-  //               if (reget.msg) context.commit(SET_ERROR, res.msg)
-  //               else if (reget.data) 
-  //                 context.commit(mut_admin.fields.setCategories, {catename: context.state.selectCatename, data: reget.data});
-  //               resolve()
-  //             })
-  //             .catch(err => {
-  //               context.commit(SET_ERROR, err.data.errors);
-  //               reject(err)
-  //             })
-  //         }
-  //       })
-  //       .catch(err => {
-  //         context.commit(SET_ERROR, err.data.errors);
-  //         reject(err)
-  //       })
-  //   })
-  // },
+  [act_user.leads.delete](context, id) {
+    return new Promise((resolve, reject) => {
+      ApiService.post(`${URLS.user.leads}/${id}/delete`)
+        .then(res => {
+          if (res.msg) {
+            context.commit(SET_ERROR, res.msg)
+            resolve()
+          } else if (res.data) {
+            resolve(res.data)
+          }
+        })
+        .catch(err => {
+          context.commit(SET_ERROR, err.data.errors);
+          reject(err)
+        })
+    })
+  },
   // //////////////////////////////////// field ///////////////////////////////////////////////////////////
   // [act_admin.fields.field.create](context, formData) {
   //   return new Promise((resolve, reject) => {
@@ -245,7 +233,7 @@ const mutations = {
   },
   [mut_user.leads.getall](state, data) {
     state.leads = JSON.parse(data.data)
-  },
+  }
   // [mut_admin.fields.setCEGroupID](state, id) {
   //   state.ceGroupID = id
   // },

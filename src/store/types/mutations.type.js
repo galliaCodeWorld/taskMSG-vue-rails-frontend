@@ -4,6 +4,8 @@ export const PURGE_AUTH = "logOut";
 //common------------------------------------------
 export const SET_ERROR = "setError";
 export const mut_setting = {
+  lock: 'MSLock',
+  nav: 'MSNav',
   theme: 'MStheme',
 }
 //admin-------------------------------------------

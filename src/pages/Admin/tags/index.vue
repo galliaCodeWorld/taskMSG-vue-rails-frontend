@@ -1,26 +1,19 @@
 <template>
   <div>
     <EditTag />
-    <div class="md-layout">
-      <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-20">
-        <LeftDock />
-      </div>
-      <div class="md-layout-item md-medium-size-70 md-xsmall-size-100 md-size-80 admin-tags">
-        <stats-card header-color="">
-          <template slot="header" style="padding-top: 10px">
-            <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Tags</p>
-            <p class="category create-tag" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" 
-              @click="showModal" >Create Tag</p>
-          </template>
-          <template slot="footer">
-            <div v-for="(tag,n) in adTagsStates.tags" :key="'ts-'+n" class="tag-info">
-              <DetailTag :tag="tag"/>
-              <md-divider class="md-hr md-theme-demo-light" />
-            </div>
-          </template>
-        </stats-card>
-      </div>
-    </div>
+    <stats-card class="admin-tags" header-color="">
+      <template slot="header" style="padding-top: 10px">
+        <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Tags</p>
+        <p class="category create-tag" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" 
+          @click="showModal" >Create Tag</p>
+      </template>
+      <template slot="footer">
+        <div v-for="(tag,n) in adTagsStates.tags" :key="'ts-'+n" class="tag-info">
+          <DetailTag :tag="tag"/>
+          <md-divider class="md-hr md-theme-demo-light" />
+        </div>
+      </template>
+    </stats-card>
   </div>
 </template>
 
@@ -29,7 +22,6 @@ import { mapGetters, mapState } from "vuex";
 import store from "@/store";
 import { act_admin } from "@/store/types/actions.type";
 import { StatsCard } from "@/components";
-import LeftDock from "../LeftDock.vue";
 import EditTag from './edit.vue';
 import DetailTag from './detail.vue'
 
@@ -37,7 +29,6 @@ export default {
   name: 'admin-tags',
   components: {
     StatsCard,
-    LeftDock,
     EditTag,
     DetailTag
   },

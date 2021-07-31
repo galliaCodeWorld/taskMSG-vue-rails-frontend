@@ -36,7 +36,7 @@ const actions = {
           resolve()
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -59,13 +59,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -87,13 +87,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -115,13 +115,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -144,13 +144,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -172,13 +172,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -200,13 +200,13 @@ const actions = {
                 resolve()
               })
               .catch(err => {
-                context.commit(SET_ERROR, err.data.errors);
+                context.commit(SET_ERROR, err);
                 reject(err)
               })
           }
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -244,7 +244,6 @@ const mutations = {
       delete state.ceFieldData[data.gid][data.del]
       if (!Object.keys(state.ceFieldData[data.gid]).length) delete state.ceFieldData[data.gid]
     }
-    console.log('store fields', data, state.ceFieldData)
   },
   [mut_admin.fields.setCategories](state, {catename, data}) {
     state.categories[catename] = data

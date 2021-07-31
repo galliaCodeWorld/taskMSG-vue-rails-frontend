@@ -25,7 +25,7 @@ const actions = {
               resolve(res.data)
             })
             .catch(err => {
-              context.commit(SET_ERROR, err.data.errors);
+              context.commit(SET_ERROR, err);
               reject(err)
             })
         : ApiService.get(`${URLS.admin.groups}/${credentials}`)
@@ -34,7 +34,7 @@ const actions = {
               resolve(res.data)
             })
             .catch(err => {
-              context.commit(SET_ERROR, err.data.errors);
+              context.commit(SET_ERROR, err);
               reject(err)
             })
     })
@@ -50,7 +50,7 @@ const actions = {
           resolve(res.data)
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -63,7 +63,7 @@ const actions = {
             resolve(res.data)
           })
           .catch(err => {
-            context.commit(SET_ERROR, err.data.errors);
+            context.commit(SET_ERROR, err);
             reject(err)
           })
         : resolve()

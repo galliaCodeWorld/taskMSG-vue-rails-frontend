@@ -16,7 +16,11 @@
         <md-button class="md-danger" style="padding: 0;" @click="deleteField">DELETE?</md-button>
       </div>
     </div>
-    <CreateEditField :openModal="openModal" :gid="Number(gid)" :filed="field" @closeCEFieldModal="editField"/>
+    <CreateEditField 
+    :openModal="openModal" 
+    :gid="Number(gid)" 
+    :field="JSON.parse(JSON.stringify(field))" 
+    @closeCEFieldModal="editField"/>
   </div>
 </template>
 

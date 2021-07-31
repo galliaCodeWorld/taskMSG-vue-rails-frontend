@@ -6,6 +6,8 @@ export const REGISTER = "register";
 export const UPDATE_USER = "updateUser";
 //common--------------------------------------
 export const act_setting = {
+  lock: 'ASLock',
+  nav: 'ASNav',
   theme: 'AStheme',
 }
 //admin----------------------------------------

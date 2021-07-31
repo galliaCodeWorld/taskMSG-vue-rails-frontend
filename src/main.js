@@ -42,8 +42,12 @@ const router = new VueRouter({
   linkExactActiveClass: "nav-item active"
 });
 router.beforeEach((from, to, next) => {
-  //console.log('router before...', from, to);
-  Promise.all([true]).then(next);
+  Promise.all([
+  ]).then(() => {
+    if (!store.getters.settingState.lock) {
+      next()
+    }
+  });
 })
 // Apiservice init
 ApiService.init();

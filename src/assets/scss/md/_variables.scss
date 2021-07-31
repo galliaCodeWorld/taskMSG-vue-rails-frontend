@@ -88,7 +88,11 @@ $brand-danger:          #d9534f !default;
 $black-color:           #3c4858 !default;
 
 $sidebar-width:               calc(100% - 260px) !default;
-$sidebar-mini-width:         calc(100% - 80px) !default;
+$sidebar-mini-width:         calc(100%) !default;
+//== customize
+//
+//##$sidebar-mini-width:         calc(100% - 80px) !default;
+
 
 
 //== Scaffolding

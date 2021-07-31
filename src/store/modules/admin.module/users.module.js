@@ -27,7 +27,7 @@ const actions = {
               resolve(res.data)
             })
             .catch(err => {
-              context.commit(SET_ERROR, err.data.errors);
+              context.commit(SET_ERROR, err);
               reject(err)
             })
         : ApiService.query(URLS.admin.users, {key: 'query', query})
@@ -36,7 +36,7 @@ const actions = {
               resolve(res.data)
             })
             .catch(err => {
-              context.commit(SET_ERROR, err.data.errors);
+              context.commit(SET_ERROR, err);
               reject(err)
             })
     })
@@ -57,7 +57,7 @@ const actions = {
           resolve(res.data)
         })
         .catch(err => {
-          context.commit(SET_ERROR, err.data.errors);
+          context.commit(SET_ERROR, err);
           reject(err)
         })
     })
@@ -70,7 +70,7 @@ const actions = {
             resolve(res.data)
           })
           .catch(err => {
-            context.commit(SET_ERROR, err.data.errors);
+            context.commit(SET_ERROR, err);
             reject(err)
           })
         : resolve()
@@ -79,14 +79,13 @@ const actions = {
   [act_admin.users.sustoggle](context, {id, suspend_at}) {
     return new Promise((resolve, reject) => {
       let slug = suspend_at ? 'reactivate' : 'suspend'
-      console.log(`${URLS.admin.users}/${id}/${slug}`)
       id 
         ? ApiService.post(`${URLS.admin.users}/${id}/${slug}`)
             .then(res => {
               resolve(res.data)
             })
             .catch(err => {
-              context.commit(SET_ERROR, err.data.errors);
+              context.commit(SET_ERROR, err);
               reject(err)
             })
         : resolve()

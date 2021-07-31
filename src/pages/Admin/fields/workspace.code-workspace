@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../taskMSG-vue-rails-frontend/vue-material-dashboard-pro-v1.4.0"
+		},
+		{
+			"path": "../../../../../../taskMSG-vue-rails-frontend/RailsTaskMakagement"
+		},
+		{
+			"path": "../../../.."
+		}
+	],
+	"settings": {}
+}

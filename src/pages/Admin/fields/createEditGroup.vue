@@ -31,14 +31,14 @@
                 v-slot="{ passed, failed }"
               >
                 <md-field :class="[{ 'md-error': failed }, { 'md-valid': passed }]">
-                  <label class="typo__label">
+                  <!-- <label class="typo__label">
                     <small class="md-color">
                       Restrict by Tag: (Only show fields for accounts that are tagged with the following)
                     </small>
-                  </label>
+                  </label> -->
                   <md-icon class="error" v-show="failed">close</md-icon>
                   <md-icon class="success" v-show="passed">done</md-icon>
-                  <multiselect ref="f_select" v-model="tag" 
+                  <multiselect v-model="tag" 
                     placeholder="Search tag" 
                     label="name" track-by="id" 
                     :multiple="false" :taggable="true" 

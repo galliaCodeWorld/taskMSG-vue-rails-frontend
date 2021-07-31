@@ -17,7 +17,7 @@ export const ADMIN_FIELD_AS = {
   'Url': 'url', 
   'Phone Number': 'tel',
   'Select List': 'select', 
-  'Radio Buttons': 'raio_button', 
+  'Radio Buttons': 'radio_button', 
   'CheckBox List': 'check_boxes', 'Checkbox': 'boolean', 
   'Date': 'date', 'Date & Time':  'datetime', 
   'Number(Decimal)': 'decimal', 'Number(Integer)': 'integer', 'Number(Floating Point)': 'float', 

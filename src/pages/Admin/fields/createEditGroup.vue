@@ -84,18 +84,20 @@ export default {
   }),
   watch: {
     ceGroupID(newValue, oldValue) {
-      let seed = store.getters.adFieldsStates.categories[store.getters.adFieldsStates.selectCatename]
-      if (Array.isArray(seed)) {
-        let find = seed.find(k => k.id === newValue)
-        if (find) {
-          this.id = find.id
-          this.label = find.label
-          let tag = store.getters.adTagsStates.tags.find(k => k.id === find.tag_id)
-          this.tag = tag ? tag : null
-        } else {
-          this.id = null
-          this.label = null
-          this.tag = null
+      if (newValue !== -1) {
+        let seed = store.getters.adFieldsStates.categories[store.getters.adFieldsStates.selectCatename]
+        if (Array.isArray(seed)) {
+          let find = seed.find(k => k.id === newValue)
+          if (find) {
+            this.id = find.id
+            this.label = find.label
+            let tag = store.getters.adTagsStates.tags.find(k => k.id === find.tag_id)
+            this.tag = tag ? tag : null
+          } else {
+            this.id = null
+            this.label = null
+            this.tag = null
+          }
         }
       }
     }
@@ -117,6 +119,7 @@ export default {
       this.$refs.cfg_form.reset();
       this.saved = false
       this.sending = false
+      store.dispatch(act_admin.fields.setCEGroupID, -1)
     },
     saveUser() {
       this.sending = true

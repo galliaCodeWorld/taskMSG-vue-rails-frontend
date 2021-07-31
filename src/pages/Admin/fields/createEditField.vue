@@ -164,7 +164,7 @@ export default {
       type: Boolean,
       default: false
     },
-    filed: {
+    field: {
       type: Object,
       default: () => {
         return {}
@@ -179,8 +179,8 @@ export default {
   watch: {
     wOpenModal(newValue, oldValue) {
       if (newValue) {
-        this.toggleOutline = this.$props.filed.id === 'new' ? true : false
-        this.data = this.$props.filed
+        this.toggleOutline = this.$props.field.id === 'new' ? true : false
+        this.data = this.$props.field
         let inx = Object.values(this.fieldAs).indexOf(this.data.as)
         if (inx > -1) this.data.as = Object.keys(this.fieldAs)[inx]
         else delete this.data.as
@@ -195,7 +195,7 @@ export default {
       toggleOutline: false,
       fieldAs: ADMIN_FIELD_AS,
       horb: AF_FORM_HIDDEN,
-      show: false,
+      show: true,
       data: {},
       saved: false,
       sending: false
@@ -225,10 +225,10 @@ export default {
       let formData = new FormData(); 
       for (const k in this.data) {
         if (keys.find(m => m === k)) {
-          if (k === 'as') formData.append(`filed[${k}]`, this.fieldAs[this.data[k]]);
-          else if (k === 'minlength' || k === 'maxlength') formData.append(`filed[${k}]`, Number(this.data[k]));
-          else if (k === 'required' || k === 'disabled') formData.append(`filed[${k}]`, this.data[k] ? 1 : 0);
-          else formData.append(`filed[${k}]`, this.data[k]);
+          if (k === 'as') formData.append(`field[${k}]`, this.fieldAs[this.data[k]]);
+          else if (k === 'minlength' || k === 'maxlength') formData.append(`field[${k}]`, Number(this.data[k]));
+          else if (k === 'required' || k === 'disabled') formData.append(`field[${k}]`, this.data[k] ? 1 : 0);
+          else formData.append(`field[${k}]`, this.data[k]);
         }
       }
       formData.append(`field[field_group_id]`, this.$props.gid)
@@ -239,7 +239,7 @@ export default {
         store.dispatch(act_admin.tags.get)
       ]).then(() => {
         this.notifyVue({
-          m: `${this.data.id === 'new' ? 'Create' : 'Update'} ${JSON.stringify(this.data.label)} filed!`, c: 'success'
+          m: `${this.data.id === 'new' ? 'Create' : 'Update'} ${JSON.stringify(this.data.label)} field!`, c: 'success'
         })
       }).catch(err=> {
         this.notifyVue({

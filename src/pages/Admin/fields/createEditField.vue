@@ -115,7 +115,9 @@
           <br />
           <div class="md-layout">
             <div class="md-layout-item md-medium-size-50 md-xsmall-size-50 md-size-50 float-left">
-              <md-button type="submit" class="md-success w-100">Create/Edit user</md-button>
+              <md-button type="submit" class="md-success w-100">
+                {{field.id === 'new' ? 'Create' : 'Update'}}
+              </md-button>
             </div>
             <div class="md-layout-item md-medium-size-50 md-xsmall-size-50 md-size-50 float-right">
               <md-button class="md-primary" :disabled="sending" @click="cancel">Cancel</md-button>

@@ -2,7 +2,7 @@
   <div class="lead-detail md-layout d-flex justify-content-between align-baseline pt-1 pb-1" @mouseover="btToggle = true" @mouseleave="btToggle = false">
     <div class="d-flex justify-content-between align-baselne">
       <div class="strip" style="width: 100px;"
-        :style="lead.status=='rejected' ? 'background:OrangeRed;' : lead.status=='new' ? 'background: Silver;' : lead.status=='converted'? 'background: Turquoise': lead.status == 'contacted'?'background:Lime;':''" >
+        :style="lead.status ==='rejected' ? 'background:OrangeRed;' : lead.status==='new' ? 'background: Silver;' : lead.status==='converted'? 'background: Turquoise': lead.status === 'contacted'?'background:Lime;':''" >
         <strong v-html="lead.status" />
       </div>
       <div style="padding-left: 10px;">
@@ -16,7 +16,7 @@
       <md-button class="md-primary" @click="loadForm">Edit</md-button>
 
       <md-button v-if="lead.status === 'rejected'" disabled class="md-default" >Convert</md-button>
-      <md-button v-else-if = "lead.status =='converted'" class="md-default" disabled >Convert</md-button>
+      <md-button v-else-if = "lead.status ==='converted'" class="md-default" disabled >Convert</md-button>
       <md-button v-else class="md-warning" @click="changeStatus('convert')">Convert</md-button>
 
       <md-button v-if="lead.status === 'rejected'" class="md-default" disabled >Reject</md-button>
@@ -24,7 +24,14 @@
 
       <md-button class="md-danger" @click="delLead">Delete?</md-button>
     </div>
+    <div v-if="convertToggle" class="lead-detail md-layout d-flex justify-content-between align-baseline pt-1 pb-1" >
+      <template slot="footer">
+          <ConvertLead :lead="lead"/>
+          <md-divider class="md-hr md-theme-demo-light" />
+      </template>
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -32,6 +39,7 @@ import store from "@/store";
 import { act_user } from "@/store/types/actions.type";
 import { SERVER_URL } from "@/common/config";
 import Swal from "sweetalert2";
+import ConvertLead from "./convert.vue"
 export default {
   name: "detail-lead",
   props: {
@@ -42,10 +50,14 @@ export default {
       }
     }
   },
+  components: {
+    ConvertLead,
+  },
   data() {
     return {
       server_url: SERVER_URL,
       btToggle: false,
+      convertToggle: false
     };
   },
   methods: {
@@ -64,49 +76,47 @@ export default {
     // },
     changeStatus(status){
       Promise.all([
-        store.dispatch(act_user.leads.status, {id: this.$props.lead.id, status: status}),
+        store.dispatch(act_user.leads.status, {status: status, id:this.$props.lead.id}),
       ]).then(() => {
         Promise.all([
-          store.dispatch(act_admin.users.search),
-          store.dispatch(act_admin.groups.get),
+          store.dispatch(act_user.leads.search),
         ]).then(() => {
-          this.notifyVue({m: `${username} is ${suspend ? 'Reactive' : 'Suspended'}!`, c: 'success'})
+          this.notifyVue({m: `${this.$props.lead.first_name} is ${this.$props.lead.status}!`, c: 'success'})
         }).catch(err => {
-          this.notifyVue({t: 2500, m: `Failed to ${suspend ? 'Reactive' : 'Suspended'} ${username}...`, c: 'warning', v: 'top', h: 'left'})
+          this.notifyVue({t: 2500, m: `Failed to ${this.$props.lead.status} ${this.$props.lead.first_name}...`, c: 'warning', v: 'top', h: 'left'})
         })
       }).catch(err=> {
-        this.notifyVue({t: 2500, m: `Failed to ${suspend ? 'Reactive' : 'Suspended'} ${username}...`, c: 'warning', v: 'top', h: 'left'})
+        this.notifyVue({t: 2500, m: `Failed to ${this.$props.lead.status} ${this.$props.lead.first_name}...`, c: 'warning', v: 'top', h: 'left'})
       })
     },
     loadForm(){
 
     },
     delLead() {
-      // let username = JSON.stringify(this.$props.user.username)
-      // Swal.fire({
-      //   title: 'Are you sure?',
-      //   text: `Not be able to recover ${username}!`,
-      //   showCancelButton: true,
-      //   confirmButtonText: 'Yes, delete it!',
-      //   cancelButtonText: 'No, keep it'
-      // }).then((result) => {
-      //   if (result.value) {
-      //     Promise.all([
-      //       store.dispatch(act_admin.users.delete, this.$props.user.id),
-      //     ]).then(() => {
-      //       Promise.all([
-      //         store.dispatch(act_admin.users.search),
-      //         store.dispatch(act_admin.groups.get),
-      //       ]).then(() => {
-      //         this.notifyVue({m: `Deleted ${username}!`, c: 'success'})
-      //       }).catch(err => {
-      //         this.notifyVue({t: 2500, m: `Failed to Delete ${username}...`, c: 'warning', v: 'top', h: 'left'})
-      //       })
-      //     }).catch(err=> {
-      //       this.notifyVue({t: 2500, m: `Failed to Delete ${username}...`, c: 'warning', v: 'top', h: 'left'})
-      //     })
-      //   }
-      // })
+      let username = JSON.stringify(this.$props.lead.first_name)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: `Not be able to recover ${username}!`,
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.value) {
+          Promise.all([ 
+            store.dispatch(act_user.leads.delete, this.$props.lead.id),
+          ]).then(() => {
+            Promise.all([
+              store.dispatch(act_user.leads.search),
+            ]).then(() => {
+              this.notifyVue({m: `Deleted ${username}!`, c: 'success'})
+            }).catch(err => {
+              this.notifyVue({t: 2500, m: `Failed to Delete ${username}...`, c: 'warning', v: 'top', h: 'left'})
+            })
+          }).catch(err=> {
+            this.notifyVue({t: 2500, m: `Failed to Delete ${username}...`, c: 'warning', v: 'top', h: 'left'})
+          })
+        }
+      })
     },
   },
   computed: {

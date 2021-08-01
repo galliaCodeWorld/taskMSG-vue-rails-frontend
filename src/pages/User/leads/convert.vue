@@ -1,5 +1,5 @@
 <template>
-<div class="d-block text-center user-edit">
+<div class="d-block text-center lead-convert">
   <ValidationObserver v-slot="{ handleSubmit }">
     <form ref="pend_form" @submit.prevent="handleSubmit(submit)">
       <div class="pend-form">

@@ -18,6 +18,9 @@ import AdminTags from "@/pages/Admin/tags";
 // import Dashboard from '@/pages/User/dash'
 import Tasks from '@/pages/User/tasks'
 import Leads from '@/pages/User/leads'
+import Campaigns from '@/pages/User/campaigns'
+import Accounts from '@/pages/User/accounts'
+import Contacts from '@/pages/User/contacts'
 
 let authPages = {
   path: "/",
@@ -92,6 +95,18 @@ let userPages = {
       path: 'leads',
       component: Leads,
       name: 'leads'
+    },{
+      path: 'campaigns',
+      component: Campaigns,
+      name: 'campaigns'
+    },{
+      path: 'accounts',
+      component: Accounts,
+      name: 'accounts'
+    },{
+      path: 'contacts',
+      component: Contacts,
+      name: 'contacts'
     },
     {
       path: 'tasks',

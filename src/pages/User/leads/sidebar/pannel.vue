@@ -7,7 +7,7 @@
   >
     <template v-for="n in Number(Object.keys(pannels).length)" :slot="'tab-pane-'+n">
       <div :key="'pane-'+n">
-        <UserLpContent 
+        <LeadContent 
           :pkey="Object.keys(pannels)[n-1]"
           :contents="pannels[Object.keys(pannels)[n-1]]" 
         />
@@ -18,13 +18,13 @@
 
 <script>
 import { Tabs } from "@/components";
-import UserLpContent from './content.vue'
+import LeadContent from './content.vue'
 
 export default {
-  name: 'user-left-pannel',
+  name: 'lead-pannel',
   components: {
     Tabs,
-    UserLpContent,
+    LeadContent,
   },
   props: {
     pannels: {

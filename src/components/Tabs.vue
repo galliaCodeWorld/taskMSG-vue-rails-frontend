@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import pannelVue from '../pages/User/leftDock/pannel.vue';
 export default {
   props: {
     flexColumn: Boolean,

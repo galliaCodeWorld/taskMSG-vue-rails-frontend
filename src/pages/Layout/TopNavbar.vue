@@ -84,7 +84,6 @@ export default {
         store.getters.settingState.nav === 'user' 
           ? this.$router.replace('/user')
           : this.$router.replace('/admin')
-        console.log(this.$router)
        
       })
       

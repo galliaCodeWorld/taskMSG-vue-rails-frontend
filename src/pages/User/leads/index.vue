@@ -1,9 +1,9 @@
 <template>
   <div class="md-layout">
-    <div class="md-layout-item md-medium-size-40 md-xsmall-size-100 md-size-30">
-      <!-- <UserLeftDock /> -->
+    <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-25">
+      <LeadBar />
     </div>
-    <div class="md-layout-item md-medium-size-60 md-xsmall-size-100 md-size-70 tasks">
+    <div class="md-layout-item md-medium-size-70 md-xsmall-size-100 md-size-75 tasks">
       <stats-card header-color="">
         <template slot="header" style="padding-top: 10px">
           <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Leads</p>
@@ -26,9 +26,8 @@ import store from "@/store";
 import { act_user } from "@/store/types/actions.type";
 // import EditUser from "./edit.vue";
 import { StatsCard } from "@/components";
-// import LeftDock from "../LeftDock.vue";
+import LeadBar from "./sidebar";
 import DetailLead from "./detail.vue";
-
 export default {
   name: 'tasks',
   computed: {
@@ -36,8 +35,8 @@ export default {
   },
   components: {
     StatsCard,
-    DetailLead
-    // UserLeftDock,
+    DetailLead,
+    LeadBar
   },
   beforeRouteEnter(to, from, next) {
     Promise.all([
@@ -60,19 +59,14 @@ export default {
     download(ext) {
       switch(ext) {
         case '.xls': {
-
         }
         case '.csv': {
-
         }
         case '.rss': {
-
         }
         case '.atom': {
-
         }
         case '.perm': {
-
         }
       }
       alert('download- *'+ext)

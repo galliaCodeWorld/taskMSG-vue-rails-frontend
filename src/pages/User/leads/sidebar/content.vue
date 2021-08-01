@@ -9,7 +9,7 @@
            <md-badge 
             :md-content="contents[key]" 
             md-position="bottom"
-            style="color: white; font-size: large; font-weight: 700;"
+            style="left: 90%; color: white; font-size: large; font-weight: 700;"
             :style="Number(contents[key]) ? 'background: orangred;' : 'background: gray;'"
           ></md-badge>
          </div>
@@ -22,7 +22,7 @@
 <script>
 
 export default {
-  name: 'user-lp-content',
+  name: 'lead-content',
   components: {
   },
   props: {

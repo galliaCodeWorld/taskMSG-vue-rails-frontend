@@ -24,12 +24,12 @@
 
       <md-button class="md-danger" @click="delLead">Delete?</md-button>
     </div>
-    <div v-if="convertToggle" class="lead-detail md-layout d-flex justify-content-between align-baseline pt-1 pb-1" >
+    <!-- <div v-if="convertToggle" class="lead-detail md-layout d-flex justify-content-between align-baseline pt-1 pb-1" >
       <template slot="footer">
           <ConvertLead :lead="lead"/>
           <md-divider class="md-hr md-theme-demo-light" />
       </template>
-    </div>
+    </div> -->
   </div>
   
 </template>
@@ -39,7 +39,7 @@ import store from "@/store";
 import { act_user } from "@/store/types/actions.type";
 import { SERVER_URL } from "@/common/config";
 import Swal from "sweetalert2";
-import ConvertLead from "./convert.vue"
+// import ConvertLead from "./convert.vue"
 export default {
   name: "detail-lead",
   props: {
@@ -51,7 +51,7 @@ export default {
     }
   },
   components: {
-    ConvertLead,
+    // ConvertLead,
   },
   data() {
     return {

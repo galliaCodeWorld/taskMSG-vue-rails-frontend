@@ -6,13 +6,13 @@
     <div class="md-layout-item md-medium-size-60 md-xsmall-size-100 md-size-70 tasks">
       <stats-card header-color="">
         <template slot="header" style="padding-top: 10px">
-          <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Leads</p>
-          <p class="category create-lead" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" @click="createTask" >Create Lead</p>
+          <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Contacts</p>
+          <p class="category create-contact" style="float: right; color: blue; font-weight: 700; padding-top: 5px;" @click="createcontact" >Create contact</p>
         </template>
         
         <template slot="footer">
-          <div v-for="(lead,n) in urLeadsStates.leads" :key="'tag'+n" class="lead-info">
-            <DetailLead :lead="lead"/>
+          <div v-for="(contact,n) in urContactsStates.contacts" :key="'tag'+n" class="contact-info">
+            <DetailContact :contact="contact"/>
             <md-divider class="md-hr md-theme-demo-light" />
           </div>
         </template>
@@ -27,21 +27,21 @@ import { act_user } from "@/store/types/actions.type";
 // import EditUser from "./edit.vue";
 import { StatsCard } from "@/components";
 // import LeftDock from "../LeftDock.vue";
-import DetailLead from "./detail.vue";
+import DetailContact from "./detail.vue";
 
 export default {
-  name: 'leads',
+  name: 'contacts',
   computed: {
-    ...mapGetters(["urLeadsStates"])
+    ...mapGetters(["urContactsStates"])
   },
   components: {
     StatsCard,
-    DetailLead
+    DetailContact
     // UserLeftDock,
   },
   beforeRouteEnter(to, from, next) {
     Promise.all([
-      store.dispatch(act_user.leads.search),
+      store.dispatch(act_user.contacts.search),
     ]).then(() => {
       next();
     });
@@ -51,30 +51,9 @@ export default {
     };
   },
   methods: {
-    
-    createTask() {
+    createcontact() {
       alert('view create form...');
     },
-    download(ext) {
-      switch(ext) {
-        case '.xls': {
-
-        }
-        case '.csv': {
-
-        }
-        case '.rss': {
-
-        }
-        case '.atom': {
-
-        }
-        case '.perm': {
-
-        }
-      }
-      alert('download- *'+ext)
-    }
   }
 };
 </script>

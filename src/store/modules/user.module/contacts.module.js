@@ -5,31 +5,25 @@ import {URLS} from '@/common/config.js'
 
 const state = {
   error: null,
-  leads: [],
-  lead: {
-    info: {},
-    tasks: [],
-    histories: [],
-  },
+  contacts: [],
   editID: -1,
-  keyword: '',
-  page : 1
+  keyword: ''
 };
 
 const getters = {
-  urLeadsStates(state) {
+  urContactsStates(state) {
     return state
   }
 };
 const actions = {
-  [act_user.leads.search](context, keyword) {
+  [act_user.contacts.search](context, keyword) {
     return new Promise((resolve, reject) => {
-      ApiService.query(URLS.user.leads, 
+      ApiService.query(URLS.user.contacts, 
         {key:'query', query: context.state.keyword})
         .then(res => {
           if (res.msg) context.commit(SET_ERROR, res.msg)
           else if (res.data){
-            context.commit(mut_user.leads.getall,  res.data);
+            context.commit(mut_user.contacts.getall,  res.data);
           }
           resolve()
         })
@@ -39,25 +33,10 @@ const actions = {
         })
     })
   },
-  [act_user.leads.status](context, {status, id}) {
-    return new Promise((resolve, reject) => {
-      ApiService.post(`${URLS.user.leads}/${id}/${status}`)
-        .then(res => {
-          if (res.msg) context.commit(SET_ERROR, res.msg)
-          else if (res.data){
-            resolve(res.data)
-          }
-        })
-        .catch(err => {
-          context.commit(SET_ERROR, err);
-          reject(err)
-        })
-    })
-  },
 
-  [act_user.leads.delete](context, id) {
+  [act_user.contacts.delete](context, id) {
     return new Promise((resolve, reject) => {
-      ApiService.post(`${URLS.user.leads}/${id}/delete`)
+      ApiService.post(`${URLS.user.contacts}/${id}/delete`)
         .then(res => {
           if (res.msg) {
             context.commit(SET_ERROR, res.msg)
@@ -78,8 +57,8 @@ const mutations = {
   [SET_ERROR](state, error) {
     state.error = error;
   },
-  [mut_user.leads.getall](state, data) {
-    state.leads = JSON.parse(data.data)
+  [mut_user.contacts.getall](state, data) {
+    state.contacts = JSON.parse(data.data)
   }
 };
 

@@ -46,6 +46,21 @@ export const mut_user = {
     getID: 'MULeadsEditID',
     getall: 'MULeadsGetaAll',
     getone: 'MULeadsGetOne',
+  },
+  campaigns: {
+    getID: 'MUCampaignEditID',
+    getall: 'MUCampaignGetaAll',
+    getone: 'MUCampaignGetOne',
+  },
+  accounts: {
+    getID: 'MUAccountEditID',
+    getall: 'MUAccountGetaAll',
+    getone: 'MUAccountGetOne',
+  },
+  contacts: {
+    getID: 'MUContactEditID',
+    getall: 'MUContactGetaAll',
+    getone: 'MUContactGetOne',
   }
 }
 /////////////////////////////////////////////////////

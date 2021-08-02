@@ -66,7 +66,6 @@ export default {
       alert(status);
     },
     loadForm(){
-
     },
     delLead() {
       // let username = JSON.stringify(this.$props.user.username)
@@ -135,4 +134,3 @@ export default {
   //     color: blue;
   //   }
 </style>
-

@@ -19,6 +19,7 @@ import store from "./store";
 import App from "./App.vue";
 import Chartist from "chartist";
 import { ModalPlugin } from 'bootstrap-vue'
+
 // router setup
 import routes from "./routes/routes";
 // service

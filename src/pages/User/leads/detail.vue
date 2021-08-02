@@ -90,7 +90,6 @@ export default {
       })
     },
     loadForm(){
-
     },
     delLead() {
       let username = JSON.stringify(this.$props.lead.first_name)
@@ -158,4 +157,3 @@ export default {
   //     color: blue;
   //   }
 </style>
-

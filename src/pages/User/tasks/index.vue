@@ -1,7 +1,6 @@
 <template>
   <div class="md-layout">
     <div class="md-layout-item md-medium-size-40 md-xsmall-size-100 md-size-30">
-      <UserLeftDock />
     </div>
     <div class="md-layout-item md-medium-size-60 md-xsmall-size-100 md-size-70 tasks">
       <stats-card header-color="">
@@ -28,13 +27,11 @@
 </template>
 <script>
 import { StatsCard } from "@/components";
-import UserLeftDock from "../leftDock";
 
 export default {
   name: 'tasks',
   components: {
     StatsCard,
-    UserLeftDock,
   },
   data() {
     return {

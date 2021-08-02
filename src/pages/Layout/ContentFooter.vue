@@ -8,7 +8,7 @@
             <p>About Us</p>
           </md-list-item>
           <md-list-item href="#">
-            <md-icon>comment</md-icon>
+            <md-icon>message</md-icon>
             <p>Blog</p>
           </md-list-item>
           <md-list-item href="#">

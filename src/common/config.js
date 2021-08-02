@@ -13,30 +13,6 @@ export const URLS = {
     contacts: 'entities/contacts'
   }
 }
-export const ADMIN_FIELD_AS = {
-  'Short Answer': 'string' , 
-  'Long Answer': 'text', 
-  'Email, Address': 'email', 
-  'Url': 'url', 
-  'Phone Number': 'tel',
-  'Select List': 'select', 
-  'Radio Buttons': 'radio_button', 
-  'CheckBox List': 'check_boxes', 'Checkbox': 'boolean', 
-  'Date': 'date', 'Date & Time':  'datetime', 
-  'Number(Decimal)': 'decimal', 'Number(Integer)': 'integer', 'Number(Floating Point)': 'float', 
-  'Date Pair': 'date_pair', 'Date & Time Pair': 'datetime_pair'
-}
-export const AF_FORM_HIDDEN = {
-  radio_button: ['maxlength', 'minlength', 'placeholde'], 
-  date: ['maxlength', 'minlength', 'placeholde'], 
-  datetime: ['maxlength', 'minlength', 'placeholde'],
-  decimal: ['maxlength', 'minlength', 'placeholde'], 
-}
-export const MIN_LEN = {
-  pass: 3, name: 3, 
-  title: 3, company: 3,
-  tag: 3,
-}
 export const THEME_SETTING = {
   sidebarMini: true,
   sidebarImg: true,
@@ -62,6 +38,34 @@ export const THEME_SETTING = {
     { image: "./img/sidebar-4.jpg", active: false }
   ],
 }
+export const MIN_LEN = {
+  pass: 6, name: 3, 
+  title: 3, company: 3,
+  tag: 3,
+}
+export const ADMIN_FIELD_AS = {
+  'Short Answer': 'string' , 
+  'Long Answer': 'text', 
+  'Email, Address': 'email', 
+  'Url': 'url', 
+  'Phone Number': 'tel',
+  'Select List': 'select', 
+  'Radio Buttons': 'radio_button', 
+  'CheckBox List': 'check_boxes', 'Checkbox': 'boolean', 
+  'Date': 'date', 'Date & Time':  'datetime', 
+  'Number(Decimal)': 'decimal', 'Number(Integer)': 'integer', 'Number(Floating Point)': 'float', 
+  'Date Pair': 'date_pair', 'Date & Time Pair': 'datetime_pair'
+}
+export const AF_FORM_HIDDEN = {
+  radio_button: ['maxlength', 'minlength', 'placeholde'], 
+  date: ['maxlength', 'minlength', 'placeholde'], 
+  datetime: ['maxlength', 'minlength', 'placeholde'],
+  decimal: ['maxlength', 'minlength', 'placeholde'], 
+}
+export const USER = {
+  lead: ['Prospecting', 'Analysis', 'Presentation', 'Proposal', 'Negotiation', 'Final Review', 'Closed/Won', 'Cloesd/Lost'],
+}
+
 
 
 

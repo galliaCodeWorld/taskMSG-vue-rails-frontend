@@ -121,7 +121,6 @@ const routes = [
   {
     path: "/",
     redirect: "/login",
-    name: "Login"
   },
   authPages,
   adminPages,

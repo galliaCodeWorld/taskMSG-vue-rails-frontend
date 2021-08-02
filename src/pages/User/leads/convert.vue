@@ -189,12 +189,10 @@
 <script>
 import { extend } from "vee-validate";
 import { required, email, confirmed, min } from "vee-validate/dist/rules";
-
 extend("email", email);
 extend("required", required);
 extend("confirmed", confirmed);
 extend("min", min);
-
 export default {
   name: "convert-lead",
   data() {

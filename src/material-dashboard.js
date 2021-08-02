@@ -16,9 +16,11 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-vue/dist/bootstrap-vue.min.css';
 import "vue-material/dist/vue-material.min.css";
+import "vue-multiselect/dist/vue-multiselect.min.css"
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import "./assets/scss/material-dashboard.scss";
 import "./assets/css/demo.css";
-import "vue-multiselect/dist/vue-multiselect.min.css"
 
 // library auto imports
 import "es6-promise/auto";

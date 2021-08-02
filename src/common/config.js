@@ -7,7 +7,10 @@ export const URLS = {
     tags: 'admin/tags',
   },
   user: {
-    leads: 'entities/leads'
+    leads: 'entities/leads',
+    campaigns: 'entities/campaigns',
+    accounts: 'entities/accounts',
+    contacts: 'entities/contacts'
   }
 }
 export const THEME_SETTING = {

@@ -55,12 +55,36 @@ export const act_admin = {
 }
 export const act_user = {
   leads: {
-    editId: 'AULeaseEditID',
+    editId: 'AULeadEditID',
     search: 'AULeadSearch',
     create: 'AULeadCreate',
     update: 'AULeadUpdate',
     delete: 'AULeadDelete',
     status: 'AULeadStatus'
-  }
+  },
+  campaigns: {
+    editId: 'AUCampaignEditID',
+    search: 'AUCampaignSearch',
+    create: 'AUCampaignCreate',
+    update: 'AUCampaignUpdate',
+    delete: 'AUCampaignDelete',
+    status: 'AUCampaignStatus'
+  },
+  accounts: {
+    editId: 'AUAccountEditID',
+    search: 'AUAccountSearch',
+    create: 'AUAccountCreate',
+    update: 'AUAccountUpdate',
+    delete: 'AUAccountDelete',
+    status: 'AUAccountStatus'
+  },
+  contacts: {
+    editId: 'AUContactEditID',
+    search: 'AUContactSearch',
+    create: 'AUContactCreate',
+    update: 'AUContactUpdate',
+    delete: 'AUContactDelete',
+    status: 'AUContactStatus'
+  },
 }
 ///////////////////////////////////////////////

@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout">
-    <div class="md-layout-item md-medium-size-20 md-xsmall-size-100 md-size-100 lead">
+    <div class="md-layout-item md-medium-size-20 md-xsmall-size-100 md-size-100 leads">
       <stats-card header-color="">
         <template slot="header" style="padding-top: 10px">
           <p class="category" style="float: left; color: blue; font-weight: 700; padding-top: 10px;">Leads</p>
@@ -55,7 +55,7 @@ const CubeComponent = Vue.extend({
 })
 
 export default {
-  name: 'lead',
+  name: 'leads',
   computed: {
     ...mapGetters(["urLeadsStates"])
   },
@@ -156,7 +156,7 @@ export default {
 };
 </script>
 <style lang="scss">
-  .lead {
+  .leads {
     .strip {
       height: 20px;
       width: auto;
